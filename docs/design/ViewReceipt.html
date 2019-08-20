@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>View Receipt: Design Specification</TITLE>
+</HEAD>
+<BODY>
+<H1>View Receipt&nbsp;</H1>
+<CENTER>
+<TABLE cols=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TH vAlign=center align=right width="10%" bgColor=#cccccc>URI:</TH>
+    <TD>ViewReceipt</TD></TR>
+  <TR>
+    <TH vAlign=center align=right bgColor=#cccccc><B>Description:</B></TH>
+    <TD>Allows a user to view what they ordered, how it will be shipped, and how much they paid in taxes.</TD>
+</TR></TBODY></TABLE></CENTER>
+<H3>Process Flow</H3>The View Receipt use case is associated with the 
+URI ViewReceipt. It involves the following steps: 
+<OL>
+  <LI>The ViewReceipt action is triggered when the user completes their order
+</OL>
+
+A detailed sequence diagram is shown below: <BR><BR>
+<IMG src="ViewReceipt_files/ViewReceipt.gif" border=1> <BR><BR>
+
+<OL>
+  <LI>The URI ViewReceipt sends a request to the Struts ActionServlet which looks up ViewReceiptAction
+  <LI>The ViewReceiptAction.peform() looks up OrderDelegate
+  <LI>The OrderDelegate.getReceipt( orderID ) looks up the OrderFacade
+  <LI>The OrderFacade.getReceipt( orderID ) looks up the OrderListHandler
+  <LI>The OrderListHandler.getReceipt( orderID ) looks up the OrderDAO
+  <LI>The OrderDAO.getReceipt( orderID ) looks up the creates a ReceiptVO based on the orderID
+  <LI>The ActionServlet.forward() forwards to the view_receipt.jsp
+</OL>
+
+<H4>ViewReceipt</H4>The ViewReceipt URI must be defined by adding this entry to struts-config.xml 
+<P>&nbsp;&nbsp;&nbsp; &lt;action path="/ViewReceipt" type="org.cayambe.web.action.ViewReceiptAction"
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+scope="request" unknown="false" validate="false"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward name="failure" 
+path="/receipt_error.jsp"/&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward 
+name="success" path="/view_receipt.jsp"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&lt;/action&gt;</TT> </P>
+<H3>Components</H3>
+<TABLE cellSpacing=2 cellPadding=2 border=1>
+  <TBODY>
+  <TR vAlign=center align=middle bgColor=#c0c0c0>
+    <TD><B>Pattern Used</B></TD>
+    <TD><B>Component</B></TD>
+    <TD><B>Description</B></TD>
+    <TD><B>Comments</B></TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/view_receipt.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Shows what the user ordered and how much it cost them (Subtotaled)</TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/receipt_error.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Indicates to the user that an error occurred with their receipt</TD></TR>
+  <TR>
+    <TD>View Helper</TD>
+    <TD>org/cayambe/web/action/ViewReceiptAction.java</TD>
+    <TD>Calls methods on delegate to access the receipt.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Business Delegate</TD>
+    <TD>org/cayambe/client/OrderDelegate.java</TD>
+    <TD>Business delegate for the Order domain.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Session Facade</TD>
+    <TD>org/cayambe/ejb/OrderFacade.java</TD>
+    <TD>Facade for the Order List Handler</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>List Handler</TD>
+    <TD>org/cayambe/ejb/OrderListHandler.java</TD>
+    <TD>gives a list of Orders</TD>
+    <TD>Be careful who can do this and how</TD>
+  </TR>
+  <TR>
+    <TD>Data Access Object</TD>
+    <TD>org/cayambe/dao/OrderDAO.java</TD>
+    <TD>Searches the DB for Orders</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Value Object</TD>
+    <TD>org/cayambe/core/OrderVO.java</TD>
+    <TD>Used to transfer Order objects to different tiers</TD>
+    <TD><BR></TD>
+  </TR>
+</TBODY>
+</TABLE>
+</BODY>
+</HTML>

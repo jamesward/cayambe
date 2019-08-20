@@ -1,0 +1,458 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice 6.0  (Win32)">
+	<META NAME="CREATED" CONTENT="20011013;16474500">
+	<META NAME="CHANGED" CONTENT="20011019;19572357">
+</HEAD>
+<BODY>
+<OL>
+	<P> 
+	</P>
+</OL>
+<TABLE WIDTH=763 BORDER=0 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=0>
+	<COL WIDTH=745>
+	<COL WIDTH=6>
+	<TR>
+		<TD WIDTH=0 VALIGN=TOP></TD>
+		<TD WIDTH=745 BGCOLOR="#ececec">
+			<P ALIGN=CENTER><FONT COLOR="#000080"><FONT FACE="Arial"><FONT SIZE=5><!--StartFragment-->Cayambe
+			Development Set Up Doc<!--EndFragment--></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=6 VALIGN=TOP></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 WIDTH=759></TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P><B>Step 1:</B></P>
+<P>Set up your CVS account and download the source code.  You will
+need to setup SSH in order access the sourceforge CVS account.</P>
+<TABLE WIDTH=322 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=316>
+	<TR>
+		<TD WIDTH=316 VALIGN=TOP>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B>SourceForge
+			Links</B></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=316 VALIGN=TOP>
+			<P><A HREF="http://sourceforge.net/docman/display_doc.php?docid=763&amp;group_id=1">HOWTO
+			CVS Unix</A></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=316 VALIGN=TOP>
+			<P><A HREF="http://sourceforge.net/docman/display_doc.php?docid=765&amp;group_id=1">CVS/SSH
+			Guide</A></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=316 VALIGN=TOP>
+			<P><A HREF="http://sourceforge.net/docman/display_doc.php?docid=769&amp;group_id=1">WinCVS</A></P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<TABLE WIDTH=751 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=741>
+	<TR>
+		<TD WIDTH=741 VALIGN=TOP>
+			<PRE STYLE="text-align: center"><FONT FACE="Thorndale, serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B><SCRIPT LANGUAGE="JavaScript">
+function ChangeIfUtf8(Utf8InCookies)
+{
+var URL = document.location.href;
+var strUtf8 = "utf8=";
+var index = URL.indexOf(strUtf8);
+var inCookie = Utf8InCookies;
+if(index>0)
+{	
+var indexValue = index + strUtf8.length;
+if (indexValue+1 < URL.length)
+{
+if (URL.charAt(index-1) == "?")
+URL = URL.substring(0,index) + URL.substring(indexValue+2);
+else
+URL = URL.substring(0,index-1) + URL.substring(indexValue+1);
+}
+else
+{	
+URL = URL.substring(0,index-1);
+}
+}
+var IsFirst = URL.indexOf("?");
+if (IsFirst>0)
+strUtf8 = "&" + strUtf8;
+else
+strUtf8 = "?" + strUtf8;
+if (inCookie=="0" && document.charset=="utf-8")
+{
+URL = URL + strUtf8 + "1";
+if (URL != document.location.href)
+{
+window.location.replace(URL);
+var wHnd = window.open("", "", "height=1,width=1,menubar=no,resizable=no,titlebar=no,scrollbars=no,status=no,toolbar=no,menubar=no,location=no");
+wHnd.close();
+}
+}
+else if (inCookie=="1" && document.charset!="utf-8")
+{
+URL = URL + strUtf8 + "0";
+if (URL != document.location.href)
+{
+window.location.replace(URL);
+var wHnd = window.open("", "", "height=1,width=1,menubar=no,resizable=no,titlebar=no,scrollbars=no,status=no,toolbar=no,menubar=no,location=no");
+wHnd.close();
+}	
+}
+}
+ChangeIfUtf8("0");
+</SCRIPT><SCRIPT LANGUAGE="javascript">
+var L_H_TEXT = "For help on dealing with messages, click a topic:";
+var H_KEY = "HM_ReadMsg";
+</SCRIPT><SCRIPT LANGUAGE="JavaScript" SRC="http://lw3fd.law3.hotmail.msn.com/cgi-bin/dasp/EN/hotmail___6.js"></SCRIPT><SCRIPT LANGUAGE="vbscript">
+on error resume next
+dim RRMsgrObj
+set RRMsgrObj = CreateObject("Messenger.MsgrObject")
+If Err.Number <> 0 Then
+
+
+
+Else
+DotheObject
+CheckForOnline
+End if
+</SCRIPT>Instructions for using Cayambe CVS</B></FONT></FONT></PRE>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=741 VALIGN=TOP>
+			<PRE>
+First!!!
+These instructions are written somewhat general, but also,
+somewhat
+specific to using cvs in unix.
+You must set your CVS_RSH environement variable to ssh
+In unix under bash or ksh do this:
+export CVS_RSH=ssh
+This tells cvs to use ssh as the transport agent.
+You also must have your CVSROOT env var set to
+:ext:<A HREF="http://lw3fd.law3.hotmail.msn.com/cgi-bin/compose?curmbox=F000000001&amp;a=89079d9b7f98d413ffec5cc6f0a79ccf&amp;mailto=1&amp;to=USERNAME@cvs.cayambe.sourceforge.net&amp;msg=MSG1003420674.61&amp;start=1349443&amp;len=5249&amp;src=&amp;type=x" TARGET="_top">USERNAME@cvs.cayambe.sourceforge.net</A>:/cvsroot/cayambe
+In unix under bash or ksh do this:
+export
+CVSROOT=:ext:<A HREF="http://lw3fd.law3.hotmail.msn.com/cgi-bin/compose?curmbox=F000000001&amp;a=89079d9b7f98d413ffec5cc6f0a79ccf&amp;mailto=1&amp;to=USERNAME@cvs.cayambe.sourceforge.net&amp;msg=MSG1003420674.61&amp;start=1349443&amp;len=5249&amp;src=&amp;type=x" TARGET="_top">USERNAME@cvs.cayambe.sourceforge.net</A>:/cvsroot/cayambe
+This tells cvs that your are using the server
+cvs.cayambe.sourceforge.net and the repository /cvsroot/cayambe
+*** Of course you will need to replace USERNAME with your s.f.
+username.
+
+
+Getting Cayambe Files
+Once you have your enviroment vars correct, it is pretty easy to
+get the
+files. This is called checkout. All you have to do is:
+cvs checkout MODULENAME
+*** Replace MODULENAME with the module you want to get. ie. docs
+or core
+This will get all of the cvs files and put them on your local
+computer
+in the current directory.
+
+
+Making Changes to files
+All you have to do is edit your files on your local computer.
+When you
+are satisfied with the changes and want to move them to the cvs
+server,
+you will need to merge your changes and then commit your files.
+Like this:
+cvs update
+cvs commit 
+The update will merge your changes with any on the cvs server.
+The commit will save your changes to the server.
+Commit will ask you to give a description of what changes you
+made.
+Please be as descriptive as possible!
+
+
+Adding new files to CVS
+If you have just created a file you would like to add to CVS,
+you can do
+so by using the add command. Like:
+cvs add blah.java</PRE>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><B>Step 2:</B></P>
+<P STYLE="font-weight: medium">Download the following tools:</P>
+<TABLE WIDTH=752 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=310>
+	<COL WIDTH=311>
+	<COL WIDTH=104>
+	<TR VALIGN=TOP>
+		<TD WIDTH=310>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B>Tool</B></FONT></P>
+		</TD>
+		<TD WIDTH=311>
+			<OL START=2>
+				<P ALIGN=CENTER STYLE="page-break-before: always"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Link</B></FONT></P>
+			</OL>
+		</TD>
+		<TD WIDTH=104>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B>Version</B></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=310 HEIGHT=23 VALIGN=TOP>
+			<P>mySql</P>
+		</TD>
+		<TD WIDTH=311 VALIGN=TOP>
+			<OL START=2>
+				<P STYLE="margin-left: -0.45cm"><A HREF="http://www.mysql.org/">http://www.mysql.org</A></P>
+			</OL>
+		</TD>
+		<TD WIDTH=104 VALIGN=BOTTOM SDVAL="3.23" SDNUM="1033;">
+			<P ALIGN=CENTER>3.23</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=310 HEIGHT=23 VALIGN=TOP>
+			<P>Jboss/Tomcat</P>
+		</TD>
+		<TD WIDTH=311 VALIGN=TOP>
+			<OL>
+				<P STYLE="margin-left: -0.45cm"><A HREF="http://www.jboss.org/">http://www.jboss.org</A></P>
+			</OL>
+		</TD>
+		<TD WIDTH=104 VALIGN=BOTTOM SDVAL="2.4" SDNUM="1033;">
+			<P ALIGN=CENTER>2.4</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=310>
+			<P>MySQL JDBC driver</P>
+		</TD>
+		<TD WIDTH=311>
+			<OL>
+				<P STYLE="margin-left: -0.45cm"><A HREF="http://mmmysql.sourceforge.net/">http://mmmysql.sourceforge.net/</A></P>
+			</OL>
+		</TD>
+		<TD WIDTH=104>
+			<P ALIGN=CENTER>2.0.4</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=310 VALIGN=TOP>
+			<P>Apache Struts</P>
+		</TD>
+		<TD WIDTH=311 VALIGN=TOP>
+			<OL>
+				<P STYLE="margin-left: -0.45cm"><A HREF="http://jakarta.apache.org/struts/index.html">http://jakarta.apache.org/struts/index.html</A></P>
+			</OL>
+		</TD>
+		<TD WIDTH=104 VALIGN=BOTTOM SDVAL="1" SDNUM="1033;">
+			<P ALIGN=CENTER>1</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<P><B>Step 3:</B></P>
+<P>Set Configs and Deploy Application</P>
+<TABLE WIDTH=755 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=374>
+	<COL WIDTH=363>
+	<TR>
+		<TD COLSPAN=2 WIDTH=745 VALIGN=TOP>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B><SPAN STYLE="font-style: normal">Important
+			Steps</SPAN></B></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P><SPAN STYLE="font-style: normal">1. Set your environmental
+			variables:</SPAN></P>
+		</TD>
+		<TD WIDTH=363>
+			<P>JAVA_HOME</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>J2EE_HOME</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>STRUTS_HOME</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>ANT_HOME</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P ALIGN=LEFT>2. Use the build.sh script to make the build.</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>Run build in the {Project_Home}/core/src directory.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P>3. Install the mySQL driver</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>Place jar in {JBOSS_HOME}/jboss/lib/ext</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P>4. Setup your Datasource in Jboss</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>See example configs at end of doc</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P>5. Run the mysql.sql and test_data.sql script</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>Run these in the mysql database.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=374>
+			<P ALIGN=LEFT>6. Deploy the application.</P>
+		</TD>
+		<TD WIDTH=363>
+			<P>Place the cayambe.ear in {JBOSS_HOME}/jboss/deploy</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<TABLE WIDTH=754 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=744>
+	<TR>
+		<TD WIDTH=744 VALIGN=TOP>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B>Example
+			Configs</B></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=744 VALIGN=TOP>
+			<P><U><B>Snipt from jboss.jcml:</B></U></P>
+			<P>  &lt;!--
+			====================================================================
+			--&gt;</P>
+			<P>  &lt;!-- JDBC--&gt;</P>
+			<P>  &lt;!--
+			====================================================================
+			--&gt;</P>
+			<P>    &lt;mbean code=&quot;org.jboss.jdbc.JdbcProvider&quot;
+			name=&quot;DefaultDomain:service=JdbcProvider&quot;&gt;</P>
+			<P>     &lt;attribute
+			name=&quot;Drivers&quot;&gt;<B>org.gjt.mm.mysql.Driver</B>&lt;/attribute&gt;</P>
+			<P>  &lt;/mbean&gt;</P>
+			<P>  &lt;mbean code=&quot;org.jboss.jdbc.XADataSourceLoader&quot;
+			name=&quot;DefaultDomain:service=XADataSource,name=Climb&quot;&gt;</P>
+			<P>    &lt;attribute name=&quot;PoolName&quot;&gt;<B>Climb</B>&lt;/attribute&gt;</P>
+			<P>    &lt;attribute
+			name=&quot;DataSourceClass&quot;&gt;org.jboss.pool.jdbc.xa.wrapper.XADataSourceImpl&lt;/attribute&gt;</P>
+			<P>    &lt;attribute
+			name=&quot;URL&quot;&gt;jdbc:mysql://<B>localhost</B>/<B>mysql</B>&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;JDBCUser&quot;&gt;&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;Password&quot;&gt;&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;Blocking&quot;&gt;False&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;BlockingTimeout&quot;&gt;100&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;GCEnabled&quot;&gt;False&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;IdleTimeout&quot;&gt;1800000&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;IdleTimeoutEnabled&quot;&gt;false&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;InvalidateOnError&quot;&gt;false&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;LoggingEnabled&quot;&gt;true&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;MaxIdleTimeoutPercent&quot;&gt;0.0&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;MaxSize&quot;&gt;100&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;MinSize&quot;&gt;10&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;PSCacheSize&quot;&gt;10&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;Properties&quot;&gt;&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;TimestampUsed&quot;&gt;False&lt;/attribute&gt;</P>
+			<P>    &lt;attribute name=&quot;TransactionIsolation&quot;&gt;&lt;/attribute&gt;</P>
+			<P>  &lt;/mbean&gt;</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=744 VALIGN=TOP>
+			<P><U><B>Snipt from standardjaws.xml:</B></U></P>
+			<P STYLE="font-weight: medium">
+			&lt;datasource&gt;java:/<B>Climb</B>&lt;/datasource&gt;</P>
+			<P STYLE="font-weight: medium"> &lt;type-mapping&gt;<B>mySQL</B>&lt;/type-mapping&gt;</P>
+			<P STYLE="font-weight: medium"> &lt;debug&gt;true&lt;/debug&gt;</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<TABLE WIDTH=753 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=743>
+	<TR>
+		<TD WIDTH=743 VALIGN=TOP>
+			<P ALIGN=CENTER><FONT SIZE=4 STYLE="font-size: 16pt"><B><SPAN STYLE="font-style: normal">Useful
+			Tidbits</SPAN></B></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=743 VALIGN=TOP>
+			<P><SPAN STYLE="font-style: normal">Helpful link for setting up
+			Jboss - <A HREF="http://www.jboss.org/documentation/HTML/index.html">Jboss
+			Documentation</A></SPAN></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=743 VALIGN=TOP>
+			<P>MySQL Manual - <A HREF="http://www.mysql.org/content.php?menu=20&amp;page_id=8">mySQL</A></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=743 VALIGN=TOP>
+			<P><A HREF="http://he.net/info/mysql/mysql.html">MySQL quick start
+			quide</A></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=743 VALIGN=TOP>
+			<P>Currently you will need to start the app using a url like
+			http://localhost:8080/BrowseCatalog.do?CategoryId=1000</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

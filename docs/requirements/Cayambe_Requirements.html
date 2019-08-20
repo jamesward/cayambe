@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>Cayambe Requirements</title>
+</head>
+<body bgcolor="White">
+
+<b><div align="center"><font size="+1"><a href="/requirements/Cayambe_Requirements.html">Cayambe Requirements</a></font></div></b>
+<hr noshade>
+
+<table align="center" width="100%" cellspacing="2" cellpadding="2" border="1">
+<tr>
+    <td valign="top" align="center" bgcolor="#cccccc" colspan="4"><b>Revision History</b></td>
+</tr>
+<tr>
+    <td valign="top" align="center" bgcolor="#ececec"><b>Date</b></td>
+    <td valign="top" align="center" bgcolor="#ececec"><b>Version</b></td>
+    <td valign="top" align="center" bgcolor="#ececec"><b>Description</b></td>
+    <td valign="top" align="center" bgcolor="#ececec"><b>Author</b></td>
+</tr>
+<tr>
+    <td valign="top">Sept. 6, 2001</td>
+    <td valign="top">0.1</td>
+    <td valign="top">Initial Draft</td>
+    <td valign="top">Mike Davis &lt;<a href="mailto:miked@wantjava.com">miked@wantjava.com</a>&gt;</td>
+</tr>
+<tr>
+    <td valign="top">Sept. 14, 2001</td>
+    <td valign="top">0.1</td>
+    <td valign="top">Initial Revision</td>
+    <td valign="top">James Ward &lt;<A HREF="mailto:jamesw@wantjava.com">jamesw@wantjava.com</A>&gt;</td>
+</tr>
+<tr>
+    <td valign="top">Oct. 2, 2001</td>
+    <td valign="top">0.1</td>
+    <td valign="top">Fixed Links and updated Use Case listing</td>
+    <td valign="top">James Ward &lt;<A HREF="mailto:jamesw@wantjava.com">jamesw@wantjava.com</A>&gt;</td>
+</tr>
+<tr>
+    <td valign="top"><br></td>
+    <td valign="top"><br></td>
+    <td valign="top"><br></td>
+    <td valign="top"><br></td>
+</tr>
+</table>
+
+
+<p>
+<b><i>Functional Requirements</i></b></p>
+
+<blockquote>
+<b><u>Actors</u></b>
+<ol>
+	<li>Customer
+	<li>Admin
+	<li>Vendor Ordering System
+	<li>Fulfillment System
+</ol>
+ 
+<p>
+<b><u>Use Cases</u> - (<font color=red>Red = Essential</font>)</b>
+
+<ul>
+	<li>Client Item Use Cases
+	<ol>
+		<li><a href="Use_Case.html#PresentHomePage"><font color=red>Present Cart Home Page</font></a>
+		<li><a href="Use_Case.html#BrowseCatalog"><font color=red>Browse Product Catalog</font></a>
+		<li><a href="Use_Case.html#ViewListing"><font color=red>View Product Listing</font></a>
+		<li><a href="Use_Case.html#ViewDetail"><font color=red>View Product Detail</font></a>
+		<li>Search Product Catalog
+	</ol>
+	<li>Client Cart Use Cases
+	<ol>
+		<li><a href="Use_Case.html#AddToCart"><font color=red>Add To Cart</font></a>
+		<li><a href="Use_Case.html#ManageCart"><font color=red>Manage Cart</font></a>
+		<li>Add to Wish List
+		<li>Manage Wish List
+	</ol>
+	<li>Client Order Use Cases
+	<ol>
+		<li><a href="Use_Case.html#CheckOutCart"><font color=red>Check Out Cart</font></a>
+		<li><a href="Use_Case.html#ViewReciept"><font color=red>View Reciept</font></a>
+		<li>Display Order History
+		<li>Manage Orders
+	</ol>
+	<li>Client Account Use Cases
+	<ol>
+		<li>Create Account
+		<li>Sign On
+		<li>Sign Off
+		<li>Manage Account
+	</ol>
+	<li>Misc Client Use Cases
+	<ol>
+		<li>Personalize Look
+	</ol>
+	<li>Admin Product Use Cases
+	<ol>
+		<li><a href="Use_Case.html#ManageInventory"><font color=red>Manage Inventory</font></a>
+		<li><a href="Use_Case.html#ManageCategory"><font color=red>Manage Category</font></a>
+		<li><a href="Use_Case.html#ManageProductGroupings"><font color=red>Manage Product Groupings</font></a>
+		<li><a href="Use_Case.html#AdminProductSearch"><font color=red>Admin Product Search</font></a>
+		<li><a href="Use_Case.html#QuickProductView"><font color=red>Quick Product View</font></a>
+		<li>Manage Inventory Sorting
+	</ol>
+	<li>Admin Order Use Cases
+	<ol>
+		<li>Process Order
+		<li>Manage Ordering
+	</ol>
+	<li>Admin Account Use Cases
+	<ol>
+		<li><font color=red>Create Account</font>
+		<li><a href="Use_Case.html#SignOn"><font color=red>Sign On</font></a>
+		<li><a href="Use_Case.html#SignOff"><font color=red>Sign Off</font></a>
+		<li>Manage Account
+	</ol>
+	<li>Misc Admin Use Cases
+	<ol>
+		<li>Manage Promotion 
+	</ol>
+	<li>Misc Use Cases
+	<ol>
+		<li>Handle System Order (B2B)
+		<li>System Collects Data for Personalization and Data Mining
+		<li>Execute Reporting and Analysis
+		<li>User Help
+	</ol>
+</ul>
+
+</blockquote> 
+
+<p>
+<b><i>Systemic Requirements</i></b>
+<ul>
+	<li>Catalog Product Data should be cached in memory so as to improve performance
+	<li>Products and categories should be easily extensible
+	<li>The checkout process should be easily extensible
+	<li>The shopping cart should handle multiple payment methods
+	<li>The shopping cart should handle multiple shipping locations
+	<li>The application should pass off orders to a fulfillment system
+	<li>The UI should be easily modified without exposing logic code.
+	<li>Extensive data should be gathered from a customer.
+</ul> 
+
+<p>
+<b><i>Non-Functional Requirements</i></b>
+<ul>
+	<li>The system must handle multiple storefronts within one running instance (ie. Multiple customers can have their store run through one instance of the shopping cart).
+	<li>A default UI implementation must be provided.
+	<li>The application must be able to bulk load inventory from other systems in XML format.
+	<li>The shopping cart must be designed for I18N.
+</ul>
+
+<hr noshade>
+&copy;Cayambe
+
+</body>
+</html>

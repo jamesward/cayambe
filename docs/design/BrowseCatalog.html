@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0080)http://wantjava.com/~miked/consulting/projects/cayambe/design/BrowseCatalog.html -->
+<HTML><HEAD><TITLE>Browse Product Catalog: Design Specification</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY>
+<H1>Browse Product Catalog&nbsp;</H1>
+<CENTER>
+<TABLE cols=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TH vAlign=center align=right width="10%" bgColor=#cccccc>URI:</TH>
+    <TD>BrowseCatalog</TD></TR>
+  <TR>
+    <TH vAlign=center align=right bgColor=#cccccc><B>Description:</B></TH>
+    <TD>A user can browse the product catalog by categories that categorize 
+      products into logical groupings. This allows a user to to locate products 
+      easily by following pre-defined trails of 
+categories.</TD></TR></TBODY></TABLE></CENTER>
+<H3>Process Flow</H3>The Browse Product Catalog use case is associated with the 
+URI BrowseCatalog. It involves the following steps: 
+<OL>
+  <LI>A listing of products categories will be displayed to the user. 
+  <LI>When the user selects a product category to browse to by clicking on the 
+  category name&nbsp;the&nbsp;BrowseCategory action will be triggered. This 
+  action looks up category and product information about the selected category. 
+  </LI></OL>A detailed sequence diagram is shown below: <BR><BR><IMG 
+src="BrowseCatalog_files/BrowseCatalogForCategory.gif" border=1> <BR><BR><IMG 
+src="BrowseCatalog_files/BrowseCatalogForProduct.gif" border=1> 
+<OL>
+  <LI>The URI BrowseCatalog sends a request to the Struts ActionServlet which 
+  looks up the action BrowseCatalogAction 
+  <LI>The BrowseCatalogAction.perfom() method is called which first looks up 
+  category information by calling the CategoryDelegate 
+  <LI>The CategoryDelegate.getCategories(categoryID) looks up the CategoryFacade 
+  on the business tier and requests categories 
+  <LI>CategoryFacade.getCategories(categoryID) calls the the CategoryListHandler 
+  to get a list of categories. 
+  <LI>The CategoryListHandler.getCategories(categoryID) gets a handle to the 
+  CategoryDAO to access the data 
+  <LI>CategoryDAO.getCategories(categoryID) looks the data up directly from the 
+  backing store and creates a Collection of CategoryVO objects to be returned to 
+  the view. 
+  <LI>The exact same sequence is repeated for products with the corresponding 
+  Product* objects. </LI></OL>
+<H4>BrowseCatalog</H4>The BrowseCatalog URI must be defined by adding this entry 
+to struts-config.xml 
+<P>&nbsp;&nbsp;&nbsp; &lt;action path="/BrowseCatalog" 
+type="org.cayambe.web.action.BrowseCatalogAction" 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+scope="request" unknown="false" validate="false"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward name="failure" 
+path="/browse_error.jsp"/&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward 
+name="success" path="/browse_catalog.jsp"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&lt;/action&gt;</TT> </P>
+<H3>Components</H3>
+<TABLE cellSpacing=2 cellPadding=2 border=1>
+  <TBODY>
+  <TR vAlign=center align=middle bgColor=#c0c0c0>
+    <TD><B>Pattern Used</B></TD>
+    <TD><B>Component</B></TD>
+    <TD><B>Description</B></TD>
+    <TD><B>Comments</B></TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/browse_catalog.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Main view for browsing the product catalog</TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/browse_error.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Indicates to the user that an error occurred during browsing</TD></TR>
+  <TR>
+    <TD>View Helper</TD>
+    <TD>org/cayambe/web/action/BrowseCatalogAction.java</TD>
+    <TD>Calls methods on delegate to look up browse categories.</TD>
+    <TD>Note: browsing should have the ability to display both categories and 
+      products on the same page.</TD></TR>
+  <TR>
+    <TD>Business Delegate</TD>
+    <TD>org/cayambe/client/ProductDelegate.java</TD>
+    <TD>Business delegate for the Product domain. Acts as a proxy for the 
+      ProductFacade.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Business Delegate</TD>
+    <TD>org/cayambe/client/CategoryDelegate.java</TD>
+    <TD>Business delegate for the Category domain. Acts as a proxy for the 
+      CategoryFacade.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Session Facade</TD>
+    <TD>org/cayambe/ejb/ProductFacade.java</TD>
+    <TD>Facade for Product List Handler.</TD>
+    <TD>I'm trying to decide if I need these facades, one good reason to have 
+      them is so that the client will be able to look them up on the server 
+      side...</TD></TR>
+  <TR>
+    <TD>Session Facade</TD>
+    <TD>org/cayambe/ejbCategoryFacade.java</TD>
+    <TD>Facade for Category List Handler.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>List Handler</TD>
+    <TD>org/cayambe/util/ProductListHandler.java</TD>
+    <TD>Creates a list of Products for the given category</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>List Handler</TD>
+    <TD>org/cayambe/util/CategoryListHandler.java</TD>
+    <TD>Creates a list of sub-categories for the given category</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Data Access Object</TD>
+    <TD>org/cayambe/dao/ProductDAO</TD>
+    <TD>Searches the DB for products.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Data Access Object</TD>
+    <TD>org/cayambe/dao/CategoryDAO</TD>
+    <TD>Searches the DB for categories.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Value Object</TD>
+    <TD>org/cayambe/core/ProductVO.java</TD>
+    <TD>Used to transfer product information between different tiers.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Value Object</TD>
+    <TD>org/cayambe/core/CategoryVO.java</TD>
+    <TD>Used to transfer category information between different tiers.</TD>
+    <TD><BR></TD></TR></TBODY></TABLE></BODY></HTML>

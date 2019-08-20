@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Cayambe JBoss 2.x Deployment Guide</TITLE>
+<STYLE>
+.code, .command, .output { 
+   background-color: #000000;
+   border-color: #666666;
+   border-width: 2px;
+   border-style: solid;
+   padding: 5px;
+   font-family: monospace;
+   font-size: 12px; 
+}
+
+.code { 
+   color: #00ff55;
+}
+.command { 
+   color: #ffee00;
+}
+.output { 
+   color: #eeeeee;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<CENTER><B>Cayambe JBoss 2.x Deployment Guide</B></CENTER>
+<HR>
+This guide will serve as a quick and dirty way to get Cayambe running on your JBoss 2 server.<BR>
+We assume that you already have a JBoss 2 server with either Tomcat or Jetty and a mySQL server runnning.<BR>
+<BR>
+There are five major steps to getting Cayambe running:
+<LI>Download Cayambe
+<LI>Download Dependencies
+<LI>Setup the Database
+<LI>Deploy Dependencies
+<LI>Deploy Cayambe Ear
+<BR><BR>
+<B>Download Cayambe</B><BR>
+<BR>
+The latest release of Cayambe can be found at SourceForge in our <A HREF="http://sourceforge.net/project/showfiles.php?group_id=8195">File Repository</A>.  Download the version and file type that best suits your needs.<BR>
+<BR>
+<B>Download Dependencies</B><BR>
+<BR>
+Our Current Dependency list:<BR>
+<LI>Struts 1.1 (<A HREF="http://jakarta.apache.org/builds/jakarta-struts/release/">download latest here</A>) *** You can just get the lib release ***
+<li>mm.mysql JDBC Driver (<a HREF="http://prdownloads.sourceforge.net/mmmysql/">download latest here</a>)
+<BR><BR>
+<B>Setup the Database</B><BR>
+<BR>
+This guide assumes that you have created a user and database for Cayambe.<BR>
+In your Cayambe release there should be a SQL dir.  That dir contains the sql scripts we will use.<BR>
+You can run the mysql.sql to create the tables.<BR>
+After the tables have been successfully created you can run the test_data.sql to load the tables with test data.<BR>
+<BR>
+In order for Cayambe to know how to talk to the database, we need to setup a new mySQL ConnectionManager in JBoss.<BR>
+Add these lines (with the correct values) to the jboss.jcml file:
+<pre class="output">
+&lt;!-- ==================================================================== --&gt;
+&lt;!-- JDBC--&gt;
+&lt;!-- ==================================================================== --&gt;
+
+&lt;mbean code="org.jboss.jdbc.JdbcProvider" name="DefaultDomain:service=JdbcProvider"&gt;
+ &lt;attribute name="Drivers"&gt;org.gjt.mm.mysql.Driver&lt;/attribute&gt;
+&lt;/mbean&gt;
+
+&lt;mbean code="org.jboss.jdbc.XADataSourceLoader" name="DefaultDomain:service=XADataSource,name=Climb"&gt;
+ &lt;attribute name="PoolName"&gt;Climb&lt;/attribute&gt;
+ &lt;attribute name="DataSourceClass"&gt;org.jboss.pool.jdbc.xa.wrapper.XADataSourceImpl&lt;/attribute&gt;
+ &lt;attribute name="URL"&gt;jdbc:mysql://localhost/database&lt;/attribute&gt;
+ &lt;attribute name="JDBCUser"&gt;username&lt;/attribute&gt;
+ &lt;attribute name="Password"&gt;password&lt;/attribute&gt;
+ &lt;attribute name="Blocking"&gt;False&lt;/attribute&gt;
+ &lt;attribute name="BlockingTimeout"&gt;100&lt;/attribute&gt;
+ &lt;attribute name="GCEnabled"&gt;False&lt;/attribute&gt;
+ &lt;attribute name="IdleTimeout"&gt;1800000&lt;/attribute&gt;
+ &lt;attribute name="IdleTimeoutEnabled"&gt;false&lt;/attribute&gt;
+ &lt;attribute name="InvalidateOnError"&gt;false&lt;/attribute&gt;
+ &lt;attribute name="LoggingEnabled"&gt;true&lt;/attribute&gt;
+ &lt;attribute name="MaxIdleTimeoutPercent"&gt;0.0&lt;/attribute&gt;
+ &lt;attribute name="MaxSize"&gt;100&lt;/attribute&gt;
+ &lt;attribute name="MinSize"&gt;10&lt;/attribute&gt;
+ &lt;attribute name="PSCacheSize"&gt;10&lt;/attribute&gt;
+ &lt;attribute name="Properties"&gt;&lt;/attribute&gt;
+ &lt;attribute name="TimestampUsed"&gt;False&lt;/attribute&gt;
+ &lt;attribute name="TransactionIsolation"&gt;&lt;/attribute&gt;
+&lt;/mbean&gt;
+</pre>
+<BR>
+Now add this to the standardjaws.xml file:
+<pre class="output">
+ &lt;datasource&gt;java:/Climb&lt;/datasource&gt;
+ &lt;type-mapping&gt;mySQL&lt;/type-mapping&gt;
+ &lt;debug&gt;true&lt;/debug&gt;
+</pre>
+<BR>
+<B>Deploy Dependencies</B><BR>
+<BR>
+Copy all the commons*.jar tiles.jar and struts.jar files into your web container's lib dir.<BR>
+Copy the mysql jdbc driver to your jboss/lib/ext dir.
+Add the mysql jar to the jboss startup classpath.
+Restart JBoss<BR>
+<BR>
+<B>Deploy Cayambe Ear</B><BR>
+<BR>
+Copy the cayambe.ear file into your deploy dir!!!
+<BR>
+<BR>
+You should now be ready to go!<BR>
+FYI: By default the cart war mounts to / and the admin war mounts to /admin
+</BODY>
+</HTML>

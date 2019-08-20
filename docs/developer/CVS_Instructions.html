@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Cayambe - CVS Instructions</TITLE>
+</HEAD>
+<BODY>
+<CENTER><FONT SIZE=5><B>Instructions for using Cayambe CVS</B></FONT></CENTER>
+<HR WIDTH="90%">
+<FONT FACE="Tahoma">
+<B>First!!!</B><BR>
+These instructions are written somewhat general, but also, somewhat specific to using cvs in unix.<BR>
+You must set your CVS_RSH environement variable to <I>ssh</I><BR>
+In unix under bash or ksh do this:<BR>
+<CODE>export CVS_RSH=ssh</CODE><BR>
+This tells cvs to use ssh as the transport agent.<BR>
+You also must have your CVSROOT env var set to <I>:ext:USERNAME@cvs.cayambe.sourceforge.net:/cvsroot/cayambe</I><BR>
+In unix under bash or ksh do this:<BR>
+<CODE>export CVSROOT=:ext:USERNAME@cvs.cayambe.sourceforge.net:/cvsroot/cayambe</CODE><BR>
+This tells cvs that your are using the server <I>cvs.cayambe.sourceforge.net</I> and the repository <I>/cvsroot/cayambe</I><BR>
+*** Of course you will need to replace USERNAME with your s.f. username.<BR>
+<BR><BR>
+<B>Windows Instructiosn (Thanks to Mike Broadbear)</B><BR>
+In order to download the catambe code from
+sourceforge, you must obtain a CVS client
+and an SSH client.  The easiest way to
+accomplish this is with Cygwin.  Cygwin is
+a Unix emulation layer for Windows with
+many useful features.<BR>
+<BR>
+Download Cygwin from:<BR>
+<A HREF="http://www.cygwin.com">http://www.cygwin.com</A><BR>
+<BR>
+**Make sure to select the 'cvs' utility
+and the 'openssh' utilities from the
+application list.<BR>
+<BR>
+Open Cygwin.<BR>
+<BR>
+Set the proper environment variables.<BR>
+At the bash command prompt, type:<BR>
+<CODE>export CVS_RSH=ssh</CODE><BR>
+<CODE>export CVSROOT=:ext:USERNAME@cvs.cayambe.sourceforge.net:/cvsroot/cayambe</CODE><BR>
+<BR>
+In order to establish the proper subdirectories
+on the remote CVS servers, log in with each of
+the following:<BR>
+<CODE>ssh -l [username] cayambe.sourceforge.net</CODE><BR>
+<CODE>ssh [username]@cvs.cayambe.sf.net</CODE><BR>
+<BR>
+Change the current directory to the directory
+that will serve as the cayambe home.<BR>
+Ex:<BR>
+<CODE>cd /cygdrive/c/cayambe</CODE><BR>
+<BR>
+Check out files!  Type:<BR>
+<CODE>cvs co core</CODE> - download the core cayambe files<BR>
+<CODE>cvs co docs</CODE> - download the cayambe documentation<BR>
+<BR>
+<B>Getting Cayambe Files</B><BR>
+Once you have your enviroment vars correct, it is pretty easy to get the files.  This is called checkout.  All you have to do is:<BR>
+<CODE>cvs checkout MODULENAME</CODE><BR>
+*** Replace MODULENAME with the module you want to get.  ie. docs or core<BR>
+This will get all of the cvs files and put them on your local computer in the current directory.<BR>
+<BR><BR>
+<B>Making Changes to files</B><BR>
+All you have to do is edit your files on your local computer.  When you are satisfied with the changes and want to move them to the cvs server, you will need to merge your changes and then commit your files.<BR>
+Like this:<BR>
+<CODE>
+cvs update<BR>
+cvs commit
+</CODE>
+<BR>
+The update will merge your changes with any on the cvs server.<BR>
+The commit will save your changes to the server.<BR>
+Commit will ask you to give a description of what changes you made.  Please be as descriptive as possible!<BR>
+<BR><BR>
+<B>Adding new files to CVS</B><BR>
+If you have just created a file you would like to add to CVS, you can do so by using the add command.  Like:<BR>
+<CODE>cvs add blah.java</CODE>
+</FONT>
+<HR WIDTH="90%">
+<CENTER><B>Links</B></CENTER>
+<ul>
+<li><a href="display_doc.php?docid=763&group_id=1">SourceForge CVS HOWTO (UNIX platforms)</a><BR><i>Description:</i> CVS on SF - rookie should read it. General, should read it, *too*.<li><a href="display_doc.php?docid=765&group_id=1">CVS/SSH FAQ</a><BR><i>Description:</i> Basics of using CVS with SSH<li><a href="display_doc.php?docid=766&group_id=1">Win32/CVS/SSH Guide</a><BR><i>Description:</i> Open Source is for Windows too<li><a href="display_doc.php?docid=767&group_id=1">Win32/CVS/SSH HowTo</a><BR><i>Description:</i> A &quot;quick &amp; dirty&quot; guide<li><a href="display_doc.php?docid=769&group_id=1">Win32/CVS/SSH addendum for WinCVS</a><BR><i>Description:</i> Read after the Win32 Guide &amp; Howto<li><a href="display_doc.php?docid=770&group_id=1">SourceForge setup tool for CVS/SSH/Win32</a><BR><i>Description:</i> There's a tool to help
+</ul>
+
+</BODY>
+</HTML>

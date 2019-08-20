@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Add To Cart: Design Specification</TITLE>
+</HEAD>
+<BODY>
+<H1>Add To Cart&nbsp;</H1>
+<CENTER>
+<TABLE cols=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TH vAlign=center align=right width="10%" bgColor=#cccccc>URI:</TH>
+    <TD>AddToCart</TD></TR>
+  <TR>
+    <TH vAlign=center align=right bgColor=#cccccc><B>Description:</B></TH>
+    <TD>Allows a user to store the products they are interested in purchasing in a virtual basket or cart.</TD>
+</TR></TBODY></TABLE></CENTER>
+<H3>Process Flow</H3>The Add To Cart use case is associated with the 
+URI AddToCart. It involves the following steps: 
+<OL>
+  <LI>The AddToCart action is triggered when the user selects to add the product to the cart from the product detail page.
+</OL>
+
+A detailed sequence diagram is shown below: <BR><BR>
+<IMG src="AddToCart_files/AddToCart.gif" border=1> <BR><BR>
+
+<OL>
+  <LI>The URI AddToCart sends a request to the Struts ActionServlet which looks up AddToCartForm
+  <LI>The AddToCartActionForm.validate() validates or invalidates the form input
+  <LI>Once the form has been validated, AddToCartAction.perform() is called which calls CartDelegate.addProduct(productID)
+  <LI>The CartDelegate.addProduct(productID) looks up the CartSession on the business tier and calls addProduct(productID)
+  <LI>CartSession.addProduct(productID) creates a cartProductVO and adds it to the Cart Session
+  <LI>The ActionServlet.forward() forwards to the cart_view.jsp
+</OL>
+
+<H4>AddToCart</H4>The AddToCart URI must be defined by adding this entry to struts-config.xml 
+<P>&nbsp;&nbsp;&nbsp; &lt;action path="/AddToCart" type="org.cayambe.web.action.AddToCartAction"
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+name="AddToCartForm" input="/AddToCartForm.jsp"
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+scope="request" unknown="false" validate="false"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward name="failure" 
+path="/cart_error.jsp"/&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward 
+name="success" path="/cart_view.jsp"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&lt;/action&gt;</TT> </P>
+<H3>Components</H3>
+<TABLE cellSpacing=2 cellPadding=2 border=1>
+  <TBODY>
+  <TR vAlign=center align=middle bgColor=#c0c0c0>
+    <TD><B>Pattern Used</B></TD>
+    <TD><B>Component</B></TD>
+    <TD><B>Description</B></TD>
+    <TD><B>Comments</B></TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/cart_view.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Main view for browsing the product catalog</TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/cart_error.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Indicates to the user that an error occurred during browsing</TD></TR>
+  <TR>
+    <TD><BR></TD>
+    <TD>org/cayambe/web/action/AddToCartForm.java</TD>
+    <TD>Handles the validation of Form Data.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>View Helper</TD>
+    <TD>org/cayambe/web/action/AddToCartAction.java</TD>
+    <TD>Calls methods on delegate to add product to cart.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Business Delegate</TD>
+    <TD>org/cayambe/client/CartDelegate.java</TD>
+    <TD>Business delegate for the Cart domain.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Session Bean</TD>
+    <TD>org/cayambe/ejb/CartSession.java</TD>
+    <TD>Session for a users cart.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Value Object</TD>
+    <TD>org/cayambe/core/CartProductVO.java</TD>
+    <TD>Used to Store information about the Products in a user's cart.</TD>
+    <TD><BR></TD>
+  </TR>
+</TBODY>
+</TABLE>
+</BODY>
+</HTML>

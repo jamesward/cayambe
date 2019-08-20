@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Manage Cart: Design Specification</TITLE>
+</HEAD>
+<BODY>
+<H1>Manage Cart&nbsp;</H1>
+<CENTER>
+<TABLE cols=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TH vAlign=center align=right width="10%" bgColor=#cccccc>URI:</TH>
+    <TD>ManageCart</TD></TR>
+  <TR>
+    <TH vAlign=center align=right bgColor=#cccccc><B>Description:</B></TH>
+    <TD>Allows a user to change quanities of products in cart. User can remove products from cart.</TD>
+</TR></TBODY></TABLE></CENTER>
+<H3>Process Flow</H3>The Manage Cart use case is associated with the 
+URI ManageCart. It involves the following steps: 
+<OL>
+  <LI>The ManageCart action is triggered when the user selects to view his / her cart or has been redirected to the cart view after a cart change
+</OL>
+
+A detailed sequence diagram is shown below: <BR><BR>
+<IMG src="ManageCart_files/ManageCart.gif" border=1> <BR><BR>
+
+<OL>
+  <LI>The URI ManageCart sends a request to the Struts ActionServlet which looks up ManageCartForm
+  <LI>The ManageCartForm.validate() validates or invalidates the form input
+  <LI>Once the form has been validated, ManageCartAction.perform() is called which calls CartDelegate.update(productID,quantity)
+  <LI>The CartDelegate.update(productID,quantity) looks up the CartSession on the business tier and calls update(productID,quantity)
+  <LI>CartSession.update(productID,quantity) creates a cartProductVO and adds it to the Cart Session
+  <LI>The ActionServlet.forward() forwards to the cart_view.jsp
+</OL>
+
+<H4>ManageCart</H4>The ManageCart URI must be defined by adding this entry to struts-config.xml 
+<P>&nbsp;&nbsp;&nbsp; &lt;action path="/ManageCart" type="org.cayambe.web.action.ManageCartAction"
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+name="ManageCartForm" input="/ManageCartForm.jsp"
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+scope="request" unknown="false" validate="false"&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward name="failure" 
+path="/cart_error.jsp"/&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;forward 
+name="success" path="/cart_view.jsp"/&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&lt;/action&gt;</TT> </P>
+<H3>Components</H3>
+<TABLE cellSpacing=2 cellPadding=2 border=1>
+  <TBODY>
+  <TR vAlign=center align=middle bgColor=#c0c0c0>
+    <TD><B>Pattern Used</B></TD>
+    <TD><B>Component</B></TD>
+    <TD><B>Description</B></TD>
+    <TD><B>Comments</B></TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/cart_view.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Main view for seeing what a user has in their cart</TD></TR>
+  <TR>
+    <TD>Composite View</TD>
+    <TD>docroot/cart_error.jsp</TD>
+    <TD>Includes header.jsp and footer.jsp</TD>
+    <TD>Indicates to the user that an error occurred with their cart</TD></TR>
+  <TR>
+    <TD><BR></TD>
+    <TD>org/cayambe/web/action/ManageCartForm.java</TD>
+    <TD>Handles the validation of Form Data.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>View Helper</TD>
+    <TD>org/cayambe/web/action/ManageCartAction.java</TD>
+    <TD>Calls methods on delegate to update the quantity of products in cart.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Business Delegate</TD>
+    <TD>org/cayambe/client/CartDelegate.java</TD>
+    <TD>Business delegate for the Cart domain.</TD>
+    <TD><BR></TD></TR>
+  <TR>
+    <TD>Session Bean</TD>
+    <TD>org/cayambe/ejb/CartSession.java</TD>
+    <TD>Session for a users cart.</TD>
+    <TD><BR></TD>
+  </TR>
+  <TR>
+    <TD>Value Object</TD>
+    <TD>org/cayambe/core/CartProductVO.java</TD>
+    <TD>Used to Store information about the Products in a user's cart.</TD>
+    <TD><BR></TD>
+  </TR>
+</TBODY>
+</TABLE>
+</BODY>
+</HTML>

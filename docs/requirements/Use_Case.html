@@ -1,0 +1,992 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Cayambe Use Cases</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H1>Cayambe Use Cases - Version 0.1</H1><!--- Revision History --->
+<TABLE cellSpacing=2 cellPadding=2 width="100%" align=center border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=middle bgColor=#cccccc colSpan=4><B>Revision 
+      History</B></TD></TR>
+  <TR>
+    <TD vAlign=top align=middle bgColor=#ececec><B>Date</B></TD>
+    <TD vAlign=top align=middle bgColor=#ececec><B>Version</B></TD>
+    <TD vAlign=top align=middle bgColor=#ececec><B>Description</B></TD>
+    <TD vAlign=top align=middle bgColor=#ececec><B>Author</B></TD></TR>
+  <TR>
+    <TD vAlign=top>Sept. 13, 2001</TD>
+    <TD vAlign=top>0.1</TD>
+    <TD vAlign=top>Created Template</TD>
+    <TD vAlign=top>Mike Davis &lt;<A 
+      href="mailto:miked@wantjava.com">miked@wantjava.com</A>&gt;</TD></TR>
+  <TR>
+    <TD vAlign=top>Sept. 13, 2001<BR></TD>
+    <TD vAlign=top>0.1<BR></TD>
+    <TD vAlign=top>Added Use Case Definitions and added section for list of 
+      actors<BR></TD>
+    <TD vAlign=top>Mike Davis &lt;<A 
+      href="mailto:miked@wantjava.com">miked@wantjava.com</A>&gt;</TD></TR>
+  <TR>
+    <TD vAlign=top>Sept. 14, 2001</TD>
+    <TD vAlign=top>0.1</TD>
+    <TD vAlign=top>Added additional use case definitions</TD>
+    <TD vAlign=top>Jon Rose &lt;<A 
+      href="mailto:jonr@wantjava.com">jonr@wantjava.com</A>&gt;</TD></TR>
+  <TR>
+    <TD vAlign=top>Sept. 17, 2001</TD>
+    <TD vAlign=top>0.1</TD>
+    <TD vAlign=top>Added additional use case definitions</TD>
+    <TD vAlign=top>James Ward &lt;<A href="mailto:jamesw@wantjava.com">jamesw@wantjava.com</A>&gt;</TD>
+  </TR>
+  <TR>
+    <TD vAlign=top>Sept. 23, 2001</TD>
+    <TD vAlign=top>0.1</TD>
+    <TD vAlign=top>Modified Admin Use Cases</TD>
+    <TD vAlign=top>Jon Rose&lt;<A href="mailto:jonr@wantjava.com">jonr@wantjava.com</A>&gt;</TD>
+  </TR>
+  <TR>
+    <TD vAlign=top>Sept. 23, 2001</TD>
+    <TD vAlign=top>0.1</TD>
+    <TD vAlign=top>Added Admin Product Search, Manage Category, Manage Product Groupings, and Quick Product View use case definitions</TD>
+    <TD vAlign=top>James Ward &lt;<A href="mailto:jamesw@wantjava.com">jamesw@wantjava.com</A>&gt;</TD>
+  </TR>
+  <TR>
+    <TD vAlign=top><BR></TD>
+    <TD vAlign=top><BR></TD>
+    <TD vAlign=top><BR></TD>
+    <TD vAlign=top><BR></TD></TR></TBODY></TABLE>
+<HR noShade>
+
+<H2>Use Case Definitions</H2><A name=TOC>
+<UL>
+  <LI><A href="#PresentHomePage">Present Cart Home Page</A> 
+  <LI><A href="#BrowseCatalog">Browse Product Catalog</A> 
+  <LI><A href="#ViewListing">View Product Listing</A> 
+  <LI><A href="#ViewDetail">View Product Detail</A> 
+  <LI><A href="#AddToCart">Add To Cart 
+  <LI><A href="#ManageCart">Manage Cart 
+  <LI><A href="#CheckOutCart">Check Out Cart
+  <LI><A href="#ViewReciept">View Reciept
+  <LI><A href="#SignOn">Sign On Admin</A> 
+  <LI><A href="#SignOff">Sign Off Admin</A> 
+  <LI><A href="#ManageInventory">Manage Inventory</A> 
+  <LI><A href="#AdminProductSearch">Admin Product Search</A> 
+  <LI><A href="#ManageCategory">Manage Category</A>
+  <LI><A href="#ManageProductGroupings">Manage Product Groupings</A>
+  <LI><A href="#QuickProductView">Quick Product View</A>
+  <LI>[Add More here...] 
+<HR noShade>
+
+<H2>Actors</H2><A name=Actors>
+<UL>
+  <LI><B>User</B> - A shopping cart user, someone who will use the cart as a 
+  shopper. 
+  <LI><B>Admin</B> - An administrator of the shopping cart system. 
+  <LI>[Add More here...] </LI></UL>
+<HR noShade>
+
+<H2>Use Case Detail</H2>
+<OL><!--- Begin Individual Use Case Description ---><A name=PresentHomePage>
+  <LI>
+  <H3>Name: Present Cart Home Page</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Home is the main page for the shopping 
+    cart. The presentation of the home page can be modified by configuration 
+    settings (ie. default display of the home page may be a browse category 
+    listing, while one admin may want to change this to search product). The 
+    home page may also take into account user personalization if that becomes 
+    available at a later time. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User enters cart home page</TD>
+        <TD vAlign=top align=left>2. System determines home page layout and 
+          displays.</TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>- The home page would be a prime 
+    candidate for personalization, this should be taken into account. <BR>- The 
+    home page display should be cached. It should not be parsed everytime it is 
+    displayed until personalization is added. 
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>The home page is properly displayed. 
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>none 
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none </LI></UL><A href="#TOC">Top</A> 
+
+  <HR noShade>
+  <A name=BrowseCatalog>
+  <LI>
+  <H3>Name: Browse Product Catalog</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>A user can browse the product catalog by 
+    categories that categorize products into logical groupings. This allows a 
+    user to to locate products easily by following pre-defined trails of 
+    categories. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects the category with which to 
+          browse the catalog.</TD>
+        <TD vAlign=top align=left>2. System displays the category template 
+          page, dynamically generating information about the selected 
+        category.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left>3. User continues to choose sub-categories 
+          until individual products of interest are displayed.</TD>
+        <TD vAlign=top align=left>4. System displays the product list template 
+          page.</TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>- A category may contain sub-categories 
+    as well as products 
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>- <A 
+    href="#ViewListing">View 
+    Product Listing Use Case</A> 
+    <P></P>
+    <LI><B>Assumptions</B> <BR>- The categories will be setup before hand 
+    through administrative interface or database interface. <BR>- Products will 
+    be assigned to categories before hand through administrative interface or 
+    database interface. </LI></UL><A 
+  href="#TOC">Top</A> 
+
+  <HR noShade>
+  <A name=ViewListing>
+  <LI>
+  <H3>Name: View Product Listing</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>A user may get to this view in multiple 
+    ways (search, browse...). This view presents the user with a list of 
+    products that will are available for purchase. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User navigates to product listing page 
+          via search or browse interface.</TD>
+        <TD vAlign=top align=left>2. System looks up products based on 
+        inputs.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>3. System displays list of products, 
+          dynamically generating information about the products within the 
+          selected category. The details displayed for the product listing are 
+          determined through system configuration. </TD></TR></TBODY></TABLE>
+    <P>Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.1 System looks up products based on 
+          inputs, but finds not products.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.2 System displays error page with relevant 
+          error message.</TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>- Details to display for product listing 
+    page must be configurable at deploy time. <BR>- The option to view detail on 
+    each product is given. <BR>- The option to add the product to a users 
+    shopping cart is available from this view. 
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>
+	- <A href="#BrowseCatalog">Browse Product Catalog Use Case</A> <BR>
+	- <A href="#ViewDetail">View Product Detail Use Case</A> <P></P>
+    <LI><B>Assumptions</B> <BR>none </LI></UL><A href="#TOC">Top</A> 
+
+  <HR noShade>
+  <A name=ViewDetail>
+  <LI>
+  <H3>Name: View Product Detail</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Allows a user of the shopping cart to view 
+    detailed information about an individual product of their choosing. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects an individual product for 
+          which to view product detail.</TD>
+        <TD vAlign=top align=left>2. System looks up product information based 
+          on inputs.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>3. System displays details about the 
+          product, dynamically generating information about the product from the 
+          backing store. </TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>- Display of product detail should be 
+    easily configurable. <BR>- The option to add the product to a users shopping 
+    cart is available from this view. 
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>none 
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>- <A href="#ViewListing">View 
+    Product Listing Use Case</A> <BR>- Add to Shopping Cart Use Case 
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none </LI></UL><A 
+  href="#TOC">Top</A> 
+  <HR noShade>
+
+  <A name=AddToCart>
+  <LI>
+  <H3>Name: Add To Cart</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Allows a user to store the products they are interested in purchasing in a virtual basket or cart.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects an individual product to add to their cart.</TD>
+        <TD vAlign=top align=left>2. System verifies the existance of a cart and a session</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>3. System adds the product to the users cart</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>4. System redirects to the Manage Cart Use Case</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    Alternative Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.1 System does not find a cart or session</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.2 System creates a cart and a session</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>
+      - System should increase the quantity by 1 of products already in cart.
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>The product has been added to the users cart
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>
+      - <a href="#ViewDetail">View Product Detail Use Case</a><BR>
+      - <a href="#ManageCart">Manage Cart</a>
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none
+  </UL>
+  <A href="#TOC">Top</A>
+
+  <HR noShade>
+  <A name=ManageCart>
+  <LI>
+  <H3>Name: Manage Cart</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Allows a user to change quanities of products in cart.  User can remove products from cart.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects to view cart or user has been redirected to cart view after a cart change</TD>
+        <TD vAlign=top align=left>2. System verifies there is a cart for the user</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>3. System makes the user specified changes to cart.</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>4. System displays a summary of the products in the users cart.  System displays line item subtotals and overall cart subtotals </TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.1 System determines no cart exists</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>2.2 System tells the user that thier cart is empty</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>
+      User should be able to select item in cart and view product details
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>none
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>none
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>
+      - <a href="#ViewDetail">View Product Details</a><BR>
+      - <a href="#AddToCart">Add To Cart</a>
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none
+  </UL>
+  <A href="#TOC">Top</A> 
+
+  <HR noShade>
+  <A name=CheckOutCart>
+  <LI>
+  <H3>Name: Check Out Cart</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>
+	The process a user goes through to order the items in their cart.  They will need to enter billing and shipping info.  Their payment might need to be authorized.  The availability of items may need to be checked.  Appropriate taxes will be added.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects Check Out.</TD>
+	<TD vAlign=top align=left>2. System asks for shipping info<BR>Fields:<BR>Name<BR>Address<BR>Suite/Apt/Box/etc<BR>SCity<BR>State<BR>Zipcode<BR>Country</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left>3. User enters shipping info</TD>
+        <TD vAlign=top align=left>4. System verifies shipping info</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>5. System stores shipping info</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>6. System asks for billing info<BR>Fields:<BR>Name on Card<BR>Card Type<BR>Card Number<BR>Card Expiration<BR>Phone<BR>Email</TD>
+      </TR>
+      <TR>
+	<TD vAlign=top align=left>7. User enters billing info</TD>
+	<TD vAlign=top align=left>8. System verifies billing info</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>9. System stores billing info</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>10. System shows cart summary(with subtotals and totals), shipping info, and billing info</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left>11. User verifies the order is correct and confirms</TD>
+	<TD vAlign=top align=left>12. System authorizes payment.</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>13. System sends order to fulfillment</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>14. System emails user reciept.</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>15. System displays reciept.</td>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>4.1 System had a problem with the shipping info</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>4.2 System redirects to 2 with relevant errors</td>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>8.1 System had a problem with the billing info</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>8.2 System redirects to 6 with relevant errors</td>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>12.1 System could not authorize payment</td>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>12.2 System redirects to 6 with relevant errors</td>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>
+	- All data should be securely transmitted between client and server for this entire process.<BR>
+	- Configurable Process Flow
+	- A way to move the user / cart session data from one server to another.
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>
+	- A user has products in their cart.
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>none
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>
+	- <a href="#ViewReciept">View Receipt</a><BR>
+	- <a href="#SignOnUser">Sign On User</a>
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none
+  </UL>
+  <A href="#TOC">Top</A> 
+
+  <HR noShade>
+  <A name=ViewReciept>
+  <LI>
+  <H3>Name: View Reciept</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>User 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>
+	Allows a user to view what they ordered, how it will be shipped, and how much they paid in taxes.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. A user completes an order.</TD>
+        <TD vAlign=top align=left>2. The system displays a receipt for the user.<BR>Including:<BR>Product Titles<BR>Quantities<BR>Subtotals<BR>Taxes<BR>Shipping Rate<BR>Shipping Info<BR>Billing Info<BR>Authorization Code</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <LI><B>Special Requirements</B> <BR>
+	Should be an easily printable page.<BR>
+	Only shows last 4 digits of credit card number.<BR>
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>
+	- An order has been completed, authorized, and sent to fulfillment.
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>
+	- Users cart session is removed
+    <P></P>
+    <LI><B>Cross Reference</B> <BR>
+	- <a href="#CheckOutCart">Check Out Cart</a>
+    <P></P>
+    <LI><B>Assumptions</B> <BR>none
+  </UL>
+  <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End View Reciept Use Case Description --->
+
+<!--- Begin Sign On Admin Use Case Description ---><A name=SignOn>
+  <LI>
+  <H3>Name: Sign On Admin</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin
+    <P></P>
+    <LI><B>Brief Description</B> <BR>This use case details how the Admin signs into the system. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User Selects “Sign On”</TD>
+        <TD vAlign=top align=left>2. System Displays Interface for user to 
+          enter Username and Password.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left>3. User Enters Username and Password and 
+          Submits. </TD>
+        <TD vAlign=top align=left>4. System validates that the username and 
+          password are correct.</TD></TR>
+      <TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>5. Additional Auth Checks</TD>
+	</TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>6. Systems Logs User into Admin Interface.</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>7. Admin Session created.</TD>
+	</TR>
+
+</TBODY></TABLE>
+    <P>Alternative Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>4.1 Invalid Username or Password.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>4.2 System Displays interface to correct 
+          Username and password.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left>4.3 User corrects and resubmits.</TD>
+        <TD vAlign=top align=left>4.4 Return to 4.</TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Pre-Conditions</B> <BR>Admin is setup in 
+    system. 
+    <P></P>
+    <LI><B>Post-Conditions</B> <BR>Admin is logged into 
+    the system and can make changes to the inventory and orders. </LI></UL>
+	<A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Sign On Admin Use Case Description ---><!--- Begin Sign Off Admin Use Case Description ---><A 
+  name=SignOff>
+  <LI>
+  <H3>Name: Sign Off Admin</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Shopping Cart Admin 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>This use case details how the Shopping Cart 
+    Admin signs off the system. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects “Sign Off””</TD>
+        <TD vAlign=top align=left>2. System logs out Admin.</TD>
+      </TR>
+
+</TBODY></TABLE>
+
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR>Admin is setup in system. 
+	<BR>Admin is logged into the system. 
+    <P></P>
+    <LI><B>Post-Conditions</B> 
+	<br>Session Invalid
+	<BR>Admin is no longer logged into the system. 
+</LI></UL>
+	<A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Sign Off Admin Use Case Description --->
+
+<!--- Begin Manage Inventory Use Case Description ---><A 
+  name=ManageInventory>
+  <LI>
+  <H3>Name: Manage Inventory</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin 
+    <P></P>
+    <LI><B>Brief Description</B> <BR>This use case details how the Shopping Cart 
+    Admin can Add, Remove, and Edit items in the shopping cart. 
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. User selects "Add Product" or "Update 
+        Product"</TD>
+        <TD vAlign=top align=left>2. System Displays Interface to input 
+          <BR>Fields: <BR>-Title <BR>-Description <BR>-Price 
+	    <br>-Image <BR>-SKU <BR>-SalePrice <BR>-OnSale
+        </TD>
+	</TR>
+      <TR>
+        <TD vAlign=top align=left>3. User inputs 
+          data and submits.</TD>
+        <TD vAlign=top align=left>4. System validates field data is proper type and that Title, Description, Price where not left null.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>5. Systems writes item to database.</TD></TR></TBODY></TABLE>
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR>Admin is setup in system. </LI></UL>
+    <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Manage Inventory Use Case Description --->
+
+<!--- Begin Admin Product Search Use Case Description --->
+<A name=AdminProductSearch>
+  <LI>
+  <H3>Name: Admin Product Search</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Searches the backing store
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. Admin selects search for products
+        </TD>
+        <TD vAlign=top align=left>2. System Displays Interface to input search strings for Title, Description, and SKU.  The interface also allows Admin to show products that are visible, not-visible or both.  The interface also allows Admin to show products that are on sale, not-on sale, or both.
+        </TD>
+	</TR>
+      <TR>
+        <TD vAlign=top align=left>3. User inputs string and submits.</TD>
+        <TD vAlign=top align=left>4. Systems check products in the backing store for the exact, case insensitive search string.</TD>
+      </TR>
+      <TR>
+	<TD vAlign=top align=left><BR></TD>
+	<TD vAlign=top align=left>5. System displays all results on one page.  Each product displays the option to remove or edit or view the product.</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P>Alternative Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>5.1 System Found No Matches.</TD></TR>
+      <TR>
+        <TD vAlign=top align=left></TD>
+        <TD vAlign=top align=left>5.2 System Tells the Admin that no products were found and allows them to change their search string and try again.</TD></TR>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+      <TR>
+        <TD vAlign=top align=left></TD>
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR><BR>
+    <LI><B>Post-Conditions</B> 
+	<BR><BR>
+    <LI><B>Cross Reference</B> 
+	<BR><A HREF="#ManageInventory">Manage Inventory</A><BR><BR>
+    <LI><B>Assumptions</B> 
+	<BR><BR>
+    </UL>
+    <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Amdin Product Search Use Case Description --->
+
+
+<!--- Begin Manage Category Use Case Description --->
+<A name="ManageCategory">
+  <LI>
+  <H3>Name: Manage Category</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Provides a way to create, edit, and remove product categories.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. Admin selects to "Manage Category"
+        </TD>
+        <TD vAlign=top align=left>2. System displays list of categories an thier sub-categories (recursivly).  Each category shows the options:<BR>
+<LI>Add Sub Category
+<LI>Edit
+<LI>Remove
+<LI>Manage Products
+<LI>Quick Product List
+        </TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left>3. Admin selects to "Add Sub Category" or "Edit"</TD>
+        <TD vAlign=top align=left>4. The system displays the interface to add a Sub Category.  Firlds are:<BR><LI>Name<LI>Header<LI>Visible<LI>Image<BR>*** If the category is being edited, the fields are auto-poulated with the existing values</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left>5. Admin enters all nessecary info</TD>
+        <TD vAlign=top align=left>6. System validates the information and saves in the backing store</TD>
+      </TR>
+      <TR>
+	<TD><BR></TD>
+	<TD>7. System redirects back to the Manage Category main interface.
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <P>Alternative Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+	<TD><BR></TD>
+        <TD vAlign=top align=left>6.1 System could not validate the information</TD>
+      </TR>
+      <TR>
+	<TD><BR></TD>
+        <TD vAlign=top align=left>6.2 System redirects back to the "Add Sub Category" interface</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+    <P>Alternative Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>3.1 Admin select "Remove"</TD>
+        <TD vAlign=top align=left>3.2 The system asks for confirmation from the user</TD>
+      </TR>
+      <TR>
+        <TD vAlign=top align=left>3.3 Admin confirms</TD>
+        <TD vAlign=top align=left>3.4 The system removes category and all subcategories.</TD>
+      </TR>
+      <TR>
+        <TD><BR></TD>
+        <TD>3.5 System redirects back to the "Add Sub Category" interface</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+      <TR>
+        <TD vAlign=top align=left></TD>
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR><BR>
+    <LI><B>Post-Conditions</B> 
+	<BR><BR>
+    <LI><B>Cross Reference</B> 
+	<BR><A HREF="#ManageProductGroupings">Manage Product Groupings</A>
+	<BR><A HREF="#QuickProductView">Quick Product View</A><BR><BR>
+    <LI><B>Assumptions</B> 
+	<BR><BR>
+    </UL>
+    <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Manage Category Use Case Description --->
+
+
+<!--- Begin Manage Product Groupings Use Case Description --->
+<A name="ManageProductGroupings">
+  <LI>
+  <H3>Name: Manage Product Groupings</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Provides a way for products to be added and removed from categories.
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. Admin selects to Manage Product Groupings
+        </TD>
+        <TD vAlign=top align=left>2. System displays products already in category.</TD>
+      </TR>
+	<TD><BR></TD>
+	<TD>3. System uses the Admin Product Search Use Case to allow Admin to search for products</TD>
+	</TR>
+      <TR>
+        <TD vAlign=top align=left>4. Admin searches for Product</TD>
+        <TD vAlign=top align=left>5. Systems displays found products</TD>
+      </TR>
+      <TR>
+	<TD vAlign=top align=left>6. User selects products to add to category and submits</TD>
+	<TD vAlign=top align=left>7. System verifies products to add</TD>
+      </TR>
+      <TR>
+	<TD><BR></TD>
+	<TD>8. System adds products to category.</TD>
+      </TR>
+      <TR>
+	<TD><BR></TD>
+	<TD>9. System redirects to 2</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P>Alternative Flow
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>7.1 System had a problem verifying (Products may already be in category).</TD></TR>
+      <TR>
+        <TD vAlign=top align=left><BR></TD>
+        <TD vAlign=top align=left>7.2 System displays error and redirects to 2.</TD></TR>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+      <TR>
+        <TD vAlign=top align=left></TD>
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR><BR>
+    <LI><B>Post-Conditions</B> 
+	<BR><BR>
+    <LI><B>Cross Reference</B> 
+	<BR><A HREF="#ManageCategory">Manage Category</A>
+	<BR><A HREF="#AdminProductSearch">Admin Product Search</A><BR><BR>
+    <LI><B>Assumptions</B> 
+	<BR><BR>
+    </UL>
+    <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Manage Product Groupings Use Case Description --->
+
+
+<!--- Begin Quick Product View Use Case Description --->
+<A name="QuickProductView">
+  <LI>
+  <H3>Name: QuickProductView</H3>
+  <UL>
+    <LI><B>Actors:</B> <BR>Admin
+    <P></P>
+    <LI><B>Brief Description</B> <BR>Displays all products in category
+    <P></P>
+    <LI><B>Flow of Events</B> <BR>Basic Flow 
+    <TABLE cellSpacing=2 cellPadding=2 border=1>
+      <TBODY>
+      <TR>
+        <TD vAlign=top align=left bgColor=#ececec><B>User Action</B></TD>
+        <TD vAlign=top align=left bgColor=#ececec><B>System Response</B></TD></TR>
+      <TR>
+        <TD vAlign=top align=left>1. Admin selects Quick Product View from Manage Category
+        </TD>
+        <TD vAlign=top align=left>2. System displays all products in selected category in a different (pop-up) window.</TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+    <P></P>
+      <TR>
+        <TD vAlign=top align=left></TD>
+    <P></P>
+    <LI><B>Pre-Conditions</B> 
+	<BR>Admin has selected Quick Product View from Manage Category<BR>
+    <LI><B>Post-Conditions</B> 
+	<BR><BR>
+    <LI><B>Cross Reference</B> 
+	<BR><A HREF="#ManageCategory">Manage Category</A>
+    <LI><B>Assumptions</B> 
+	<BR><BR>
+    </UL>
+    <A href="#TOC">Top</A> 
+
+  <HR noShade>
+<!--- End Quick Product View Use Case Description --->
+
+
+</LI></OL></BODY></HTML>
+
+</LI></OL></BODY></HTML>

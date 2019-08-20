@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<TITLE>Cayambe JBoss 3.0 Deployment Guide</TITLE>
+</HEAD>
+<BODY>
+<CENTER><B>Cayambe JBoss 3.0 Deployment Guide</B></CENTER>
+<HR>
+This guide will serve as a quick and dirty way to get Cayambe running on your JBoss 3 server.<BR>
+We assume that you already have a JBoss 3 server with either Tomcat or Jetty and a mySQL server runnning.<BR>
+<BR>
+There are five major steps to getting Cayambe running:
+<LI>Download Cayambe
+<LI>Download Dependencies
+<LI>Setup the Database
+<LI>Deploy Dependencies
+<LI>Deploy Cayambe Ear
+<BR><BR>
+<B>Download Cayambe</B><BR>
+<BR>
+The latest release of Cayambe can be found at SourceForge in our <A HREF="http://sourceforge.net/project/showfiles.php?group_id=8195">File Repository</A>.  Download the version and file type that best suits your needs.<BR>
+<BR>
+<B>Download Dependencies</B><BR>
+<BR>
+Our Current Dependency list:<BR>
+<LI>Struts 1.1 (<A HREF="http://jakarta.apache.org/builds/jakarta-struts/release/">download latest here</A>) *** You can just get the lib release ***
+<LI>mm.mysql JDBC Driver (<A HREF="http://prdownloads.sourceforge.net/mmmysql/">download latest here</A>)
+<BR><BR>
+<B>Setup the Database</B><BR>
+<BR>
+This guide assumes that you have created a user and database for Cayambe.<BR>
+In your Cayambe release there should be a SQL dir.  That dir contains the sql scripts we will use.<BR>
+You can run the mysql.sql to create the tables.<BR>
+After the tables have been successfully created you can run the test_data.sql to load the tables with test data.<BR>
+<BR>
+In order for Cayambe to know how to talk to the database, we need to setup a new mySQL ConnectionManager in JBoss.<BR>
+Modify the ConnectionURL, UserName, and Password in the mysql-service.xml file in the sql dir to fit your setup.<BR>
+Copy that file into your deploy dir.<BR>
+<BR>
+<B>Deploy Dependencies</B><BR>
+<BR>
+Copy all the commons*.jar tiles.jar and struts.jar files into your deploy dir.<BR>
+Copy the mm.mysql driver to your deploy dir.<BR>
+<BR>
+<B>Deploy Cayambe Ear</B><BR>
+<BR>
+Copy the cayambe.ear file into your deploy dir!!!
+<BR>
+<BR>
+You should now be ready to go!<BR>
+FYI: By default the cart war mounts to / and the admin war mounts to /admin
+</BODY>
+</HTML>
